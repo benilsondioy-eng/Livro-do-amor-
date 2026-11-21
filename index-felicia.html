@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#160f14">
+  <meta name="description" content="Um livro de memórias feito especialmente para Felícia.">
+  <title>Felícia — Uma história bonita</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Caveat:wght@500;600&display=swap');
+:root{--pink:#d6a0ae;--rose:#bd8294;--lilac:#9c8298;--peach:#d4b18c;--blue:#a9a0a0;--ink:#e9dfe0;--paper:#fff9ef}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:'DM Sans',sans-serif;color:var(--ink)}
+body{min-height:100svh;overflow-x:hidden;background:radial-gradient(ellipse at 50% 12%,#38232d 0%,#21151d 42%,#100c10 100%);padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);position:relative}
+.ambient{position:fixed;border-radius:50%;filter:blur(42px);opacity:.18;pointer-events:none;z-index:-1}.ambient-one{width:230px;height:230px;background:#a45b70;top:12%;left:-120px}.ambient-two{width:260px;height:260px;background:#8c6b78;right:-150px;bottom:8%}
+.topbar{height:48px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#c2a6af;position:relative}.tiny-heart{font-size:18px;color:#c7a17f}.music-button{position:absolute;right:0;border:1px solid #80616c;background:#2a1b23;color:#ead8dc;border-radius:30px;padding:8px 11px;font:600 11px 'DM Sans';box-shadow:0 4px 14px #0005}.music-button.playing{background:#50313e}
+main{width:100%;max-width:520px;margin:0 auto;min-height:calc(100svh - 90px);display:flex;align-items:center;justify-content:center}
+.intro{width:100%;display:flex;flex-direction:column;align-items:center;position:relative;padding:12px 0 24px;animation:fadeUp .9s both}
+.book-cover{width:min(78vw,330px);height:min(112vw,460px);max-height:58svh;padding:11px;border-radius:9px 18px 18px 9px;background:linear-gradient(90deg,#171015,#5b3945 5%,#24171e 12%,#60404a 100%);box-shadow:12px 22px 45px #000a, inset 3px 0 5px #d6b9a044;transform:perspective(900px) rotateY(-5deg);animation:float 4s ease-in-out infinite}
+.cover-inner{height:100%;border:1px solid #c9a98c99;border-radius:4px 12px 12px 4px;background:#160e14;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:24px}
+.cover-photo{position:absolute;inset:-6px;background:linear-gradient(180deg,#160e14a0 0%,#1b111899 45%,#100b10d9 100%),url('imagens/felicia-04.jpeg') center 34%/cover;filter:blur(3px) brightness(.72);transform:scale(1.04);z-index:0}.cover-inner:before{content:'';position:absolute;inset:12px;border:1px solid #d2b28b88;border-radius:2px;pointer-events:none;z-index:2}.cover-inner:after{content:'❧';position:absolute;top:22px;right:25px;color:#d6b58f;font-family:serif;font-size:30px;opacity:.8;transform:rotate(12deg);z-index:3}.cover-inner>*{position:relative;z-index:1}
+.cover-stamp{width:52px;height:52px;border:1px solid #d3b18b;border-radius:50%;display:grid;place-items:center;color:#e2c6a3;font:500 24px 'Playfair Display',serif;margin-bottom:22px;background:#170f16a8}
+.eyebrow{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#e0c7c6;margin:0 0 13px}
+h1,h2{font-family:'Playfair Display',serif;font-weight:600}h1{font-size:clamp(43px,13vw,61px);color:#fff1e7;margin:0 0 12px}h2{font-size:clamp(27px,8vw,37px);line-height:1.12;color:#855b80;margin:5px 0 14px}h2 em{color:#d77da7}
+.cover-rule{width:110px;border-top:1px solid #d3b18b;position:relative;margin:10px 0 17px}.cover-rule span{position:absolute;left:calc(50% - 7px);top:-10px;background:#24171e;padding:0 5px;color:#d3b18b}
+.cover-subtitle{font-family:'Playfair Display',serif;font-style:italic;line-height:1.6;color:#f0dfe0;font-size:16px;text-shadow:0 2px 8px #000}.cover-bottom{position:absolute;bottom:24px;font-family:'Playfair Display',serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#e0c29f}
+.open-button{margin-top:27px;border:0;border-radius:30px;padding:14px 22px;background:linear-gradient(100deg,#79505d,#b18b70);color:#fff8f1;font-weight:700;font-size:13px;box-shadow:0 8px 20px #0006;animation:pulse 2.8s infinite}.open-button span{font-size:18px;margin-left:10px}.hint{font-size:11px;color:#c2a6af;margin-top:12px}.intro-flower{position:absolute;color:#c7a17f;opacity:.7;animation:sway 7s ease-in-out infinite}.flower-a{font-size:30px;left:4%;top:18%}.flower-b{font-size:25px;right:5%;bottom:25%;color:#b58e98}
+.reader{width:100%;padding:4px 0 16px;animation:fadeUp .55s both}.hidden{display:none!important}.reader-heading{display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;color:#a77b9a;margin:0 5px 10px}
+.book-stage{height:min(126vw,590px);min-height:475px;max-height:67svh;position:relative;perspective:1600px;touch-action:pan-y;filter:drop-shadow(0 15px 18px #8f6a8730)}
+.page{position:absolute;inset:0;background:linear-gradient(100deg,#f3e8d8,#fffaf0 8%,#fff9ed 90%,#eadcc9);border-radius:5px 13px 13px 5px;padding:28px 24px 35px;overflow:hidden;transform-origin:left center;backface-visibility:hidden;box-shadow:inset 8px 0 12px #b89b7720,inset -2px 0 4px #b99d7c22;transition:transform .75s cubic-bezier(.2,.75,.2,1),opacity .5s}
+.page:before{content:'';position:absolute;inset:10px;border:1px solid #d8c4aa80;border-radius:3px;pointer-events:none}.page:after{content:'❧  ✧  ❧';position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#d8a5bd;font-size:12px;letter-spacing:8px;opacity:.7}
+.page:not(.active){pointer-events:none;opacity:0;transform:translateX(18px) rotateY(-8deg) scale(.985)}.page.active{opacity:1;z-index:2;transform:translateX(0) rotateY(0) scale(1)}.page.leaving{z-index:3;transform:rotateY(-82deg);opacity:.2}
+.page-cover{background:linear-gradient(145deg,#f3e6d7,#fffaf0 50%,#ead9d3);display:flex;flex-direction:column;justify-content:center;text-align:center;align-items:center}.page-cover .page-deco{font-size:34px;color:#a77d70;margin-bottom:15px}.page-cover h2{font-size:34px}.page-cover .page-copy{font-family:'Caveat';font-size:23px}.doodle{font-size:36px;color:#a77d70;margin-top:18px}
+.page-copy{font-family:'Playfair Display',serif;font-style:italic;line-height:1.55;font-size:14px;color:#80687a;margin:13px 0}.photo-frame{background:#fff;padding:7px 7px 23px;box-shadow:0 5px 15px #775d5630;width:72%;margin:10px auto 14px;position:relative;z-index:1}.photo-frame img{display:block;width:100%;height:190px;object-fit:cover}.tilt-left{transform:rotate(-3deg)}.tilt-right{transform:rotate(3deg)}.photo-pair{height:245px;position:relative;margin:8px 0 5px}.photo-pair .photo-frame{position:absolute;width:61%;top:4px;left:3%}.photo-pair .photo-frame img{height:180px}.photo-pair .small-frame{width:48%;top:73px;left:auto;right:0;z-index:2}.photo-pair .small-frame img{height:135px}.wide-frame{width:82%}.wide-frame img{height:210px}.page-number{position:absolute;bottom:17px;right:23px;font-family:'Caveat';font-size:16px;color:#b28aa0}.letter-page{background:linear-gradient(140deg,#fff6e8,#fffaf0 65%,#f8e7ef)}.letter-seal{width:42px;height:42px;border-radius:50%;background:#e9a8c4;color:white;display:grid;place-items:center;font-size:23px;margin:4px 0 17px;box-shadow:0 3px 8px #c77e9c55}.letter-text{font-family:'Caveat';font-size:19px;line-height:1.42;color:#765d70;margin:12px 0}.signature{text-align:right;font-family:'Caveat';font-size:18px;color:#936e8b;margin-top:18px}.signature span{font-size:27px;color:#c16f9b}
+.controls{display:flex;align-items:center;justify-content:space-between;margin:14px 4px 0}.nav-button{width:43px;height:43px;border:1px solid #e8c3d5;background:#fff9f5;border-radius:50%;font-size:28px;line-height:1;color:#b4779a;box-shadow:0 4px 12px #a8799820}.nav-button:disabled{opacity:.35}.swipe-hint{font-size:10px;color:#a7839c;letter-spacing:.5px}.restart-button{display:block;margin:12px auto 0;border:0;background:transparent;color:#a77a98;font-size:11px;text-decoration:underline}
+footer{text-align:center;color:#c2a6af;font-size:10px;letter-spacing:1px;padding:10px 0 18px}footer span{color:#df8db2}
+.sparkles span{position:fixed;z-index:-1;color:#d99abb;opacity:.4;animation:drift 9s linear infinite;font-size:18px}.sparkles span:nth-child(1){left:8%;top:24%}.sparkles span:nth-child(2){right:8%;top:39%;animation-delay:2s}.sparkles span:nth-child(3){left:15%;bottom:15%;animation-delay:4s}.sparkles span:nth-child(4){right:17%;bottom:25%;animation-delay:1s}.sparkles span:nth-child(5){left:48%;top:8%;animation-delay:3s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:perspective(900px) rotateY(-5deg) translateY(0)}50%{transform:perspective(900px) rotateY(-5deg) translateY(-7px)}}@keyframes pulse{0%,100%{box-shadow:0 8px 20px #c28ab744}50%{box-shadow:0 8px 27px #c28ab777}}@keyframes sway{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-8px)}}@keyframes drift{0%{transform:translateY(0) rotate(0);opacity:0}20%{opacity:.5}80%{opacity:.45}100%{transform:translateY(-75px) rotate(35deg);opacity:0}}
+@media(min-width:600px){body{max-width:480px;margin:auto}.book-stage{max-height:650px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="sparkles" aria-hidden="true"><span>✦</span><span>♡</span><span>✿</span><span>✧</span><span>♡</span></div>
+
+  <header class="topbar">
+    <span class="tiny-heart">✧</span>
+    <span>feito com carinho</span>
+    <button class="music-button" id="musicButton" aria-label="Reproduzir música">♫ <span id="musicLabel">Música</span></button>
+  </header>
+
+  <main>
+    <section class="intro" id="intro">
+      <div class="intro-flower flower-a">✧</div><div class="intro-flower flower-b">❧</div>
+      <div class="book-cover" id="bookCover">
+        <div class="cover-inner">
+          <div class="cover-photo" aria-hidden="true"></div>
+          <div class="cover-stamp">F</div>
+          <p class="eyebrow">um livro de memórias</p>
+          <h1>Felícia</h1>
+          <div class="cover-rule"><span>✧</span></div>
+          <p class="cover-subtitle">Uma história bonita<br>que continua a ser escrita...</p>
+          <div class="cover-bottom">com amor, para ti</div>
+        </div>
+      </div>
+      <button class="open-button" id="openBook">Abrir o nosso livro <span>→</span></button>
+      <p class="hint">Uma pequena surpresa espera por ti</p>
+    </section>
+
+    <section class="reader hidden" id="reader" aria-label="Livro de memórias">
+      <div class="reader-heading"><span>FELÍCIA</span><span id="pageCounter">01 / 06</span></div>
+      <div class="book-stage" id="bookStage">
+        <article class="page page-cover" data-page="0">
+          <div class="page-deco">❧</div><p class="eyebrow">para alguém especial</p>
+          <h2>Há pessoas<br>que tornam a vida<br><em>mais bonita.</em></h2>
+          <p class="page-copy">E depois há tu, Felícia.</p>
+          <div class="doodle">♡</div>
+          <span class="page-number">01</span>
+        </article>
+
+        <article class="page" data-page="1">
+          <p class="eyebrow">capítulo um · a tua essência</p>
+          <h2>O teu jeito<br>de ser</h2>
+          <div class="photo-frame tilt-left"><img src="imagens/felicia-01.jpeg" alt="Retrato de Felícia"></div>
+          <p class="page-copy">Há beleza nos detalhes, nos gestos espontâneos e na pessoa que és, mesmo quando não estás a tentar impressionar ninguém.</p>
+          <span class="page-number">02</span>
+        </article>
+
+        <article class="page" data-page="2">
+          <p class="eyebrow">capítulo dois · momentos</p>
+          <h2>Memórias<br>que ficam</h2>
+          <div class="photo-pair">
+            <div class="photo-frame tilt-right"><img src="imagens/felicia-02.jpeg" alt="Felícia ao espelho"></div>
+            <div class="photo-frame tilt-left small-frame"><img src="imagens/felicia-03.jpeg" alt="Felícia num momento especial"></div>
+          </div>
+          <p class="page-copy">Nem todos os momentos precisam de ser extraordinários para merecerem um lugar na memória.</p>
+          <span class="page-number">03</span>
+        </article>
+
+        <article class="page" data-page="3">
+          <p class="eyebrow">capítulo três · a tua luz</p>
+          <h2>Do teu jeito,<br>és única</h2>
+          <div class="photo-frame tilt-left wide-frame"><img src="imagens/felicia-04.jpeg" alt="Felícia num retrato"></div>
+          <p class="page-copy">Admiro a tua força, a tua dedicação e a maneira como continuas a ser tu, com a tua própria forma de olhar para o mundo.</p>
+          <span class="page-number">04</span>
+        </article>
+
+        <article class="page" data-page="4">
+          <p class="eyebrow">capítulo quatro · pequenos instantes</p>
+          <h2>A vida também<br>é feita disto</h2>
+          <div class="photo-pair">
+            <div class="photo-frame tilt-left"><img src="imagens/felicia-05.jpeg" alt="Felícia num momento descontraído"></div>
+            <div class="photo-frame tilt-right small-frame"><img src="imagens/felicia-08.jpeg" alt="Momento de praia"></div>
+          </div>
+          <p class="page-copy">Dos dias simples, dos passeios, dos sorrisos e de tudo aquilo que, sem avisar, acaba por se tornar especial.</p>
+          <span class="page-number">05</span>
+        </article>
+
+        <article class="page letter-page" data-page="5">
+          <p class="eyebrow">uma carta para ti</p>
+          <div class="letter-seal">♡</div>
+          <h2>Felícia,</h2>
+          <p class="letter-text">Se pudesse guardar uma coisa destas páginas, seria a oportunidade de continuar a conhecer-te, apoiar-te, rir contigo e construir novas memórias ao teu lado.</p>
+          <p class="letter-text">Não quero que estas palavras sejam apenas bonitas. Quero que te lembrem que és importante, que és admirada e que há alguém que escolhe caminhar contigo, um dia de cada vez.</p>
+          <p class="signature">Com carinho,<br><span>Benilson</span> ♡</p>
+          <span class="page-number">06</span>
+        </article>
+      </div>
+
+      <div class="controls">
+        <button class="nav-button" id="prevPage" disabled aria-label="Página anterior">‹</button>
+        <span class="swipe-hint">desliza ou toca nas setas</span>
+        <button class="nav-button" id="nextPage" aria-label="Página seguinte">›</button>
+      </div>
+      <button class="restart-button" id="restartBook">↺ Ler novamente</button>
+    </section>
+  </main>
+
+  <audio id="siteMusic" src="./musica.mp3" preload="none" loop></audio>
+  <footer>feito especialmente para Felícia <span>♡</span></footer>
+  <script>
+const intro=document.getElementById('intro');
+const reader=document.getElementById('reader');
+const openBook=document.getElementById('openBook');
+const pages=[...document.querySelectorAll('.page')];
+const prev=document.getElementById('prevPage');
+const next=document.getElementById('nextPage');
+const counter=document.getElementById('pageCounter');
+const stage=document.getElementById('bookStage');
+let current=0;
+function showPage(index){
+  if(index<0||index>=pages.length)return;
+  pages.forEach((page,i)=>{
+    page.classList.toggle('active',i===index);
+    page.classList.remove('leaving');
+    page.style.zIndex=i===index?'2':'1';
+  });
+  current=index;
+  prev.disabled=current===0;
+  next.disabled=current===pages.length-1;
+  counter.textContent=String(current+1).padStart(2,'0')+' / '+String(pages.length).padStart(2,'0');
+}
+openBook.addEventListener('click',()=>{
+  intro.classList.add('hidden');
+  reader.classList.remove('hidden');
+  showPage(0);
+});
+prev.addEventListener('click',()=>showPage(current-1));
+next.addEventListener('click',()=>showPage(current+1));
+document.getElementById('restartBook').addEventListener('click',()=>showPage(0));
+let startX=0,startY=0;
+stage.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX;startY=e.changedTouches[0].clientY},{passive:true});
+stage.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-startX;
+  const dy=e.changedTouches[0].clientY-startY;
+  if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.25){showPage(current+(dx<0?1:-1));}
+},{passive:true});
+stage.addEventListener('click',e=>{
+  if(e.target.closest('img'))return;
+  const rect=stage.getBoundingClientRect();
+  const x=e.clientX-rect.left;
+  if(x>rect.width*.65)showPage(current+1);
+  else if(x<rect.width*.35)showPage(current-1);
+});
+const music=document.getElementById('siteMusic');
+const musicButton=document.getElementById('musicButton');
+const musicLabel=document.getElementById('musicLabel');
+musicButton.addEventListener('click',async()=>{
+  if(music.paused){
+    try{await music.play();musicButton.classList.add('playing');musicLabel.textContent='A tocar';}
+    catch(err){musicLabel.textContent='Adicionar música';}
+  }else{music.pause();musicButton.classList.remove('playing');musicLabel.textContent='Música';}
+});
+showPage(0);
+  </script>
+</body>
+</html>
